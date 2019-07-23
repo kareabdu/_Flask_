@@ -1,0 +1,137 @@
+{% extends 'index.html' %}
+
+{% block body %}
+
+<div class="content-panel">
+  <h4><i class="fa fa-angle-right"></i> Liste des Apprenants</h4>
+  <section id="unseen">
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Matricule</th>
+          <th>Prenom</th>
+          <th>Nom</th>
+          <th>Sex</th>
+          <th>Date de naissance</th>
+          <th>Mail</th>
+          <th>Promo</th>
+          <th>Action</th>
+
+
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in app %}
+        <tr>
+
+          <td>{{row.1}}</td>
+          <td>{{row.2}}</td>
+          <td>{{row.3}}</td>
+          <td>{{row.4}}</td>
+          <td>{{row.5}}</td>
+          <td>{{row.6}}</td>
+          <td>{{row.7}}</td>
+
+          <td><a href="/modifier_apprenant/{{row.0}}" data-toggle="modal" data-target="#myModal{{row.0}}">Modifier</a>
+          </td>
+
+        </tr>
+        <!-- Modal -->
+        <div id="myModal{{row.0}}" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">modifier Apprenant</h4>
+              </div>
+              <div class="modal-body">
+
+                <form class="form-group" action="{{url_for('modifier_apprenant')}}" method="POST">
+
+
+                  <div>
+                    <label for="" class="">Matricule</label>
+                    <input class=" form-control" id="id_app" name="id_app" type="hidden" value="{{row.0}}" />
+
+                    <input class=" form-control" id="matricule" name="matricule" type="text" value="{{row.1}}" readonly />
+
+                  </div>
+
+                  <div>
+                    <label for="" class="">Prenom</label>
+
+                    <input class=" form-control" id="firstname" name="firstname" type="text" value="{{row.2}}" />
+
+                  </div>
+
+                  <div>
+                    <label for="" class="">Nom</label>
+
+                    <input class=" form-control" id="lastname" name="lastname" type="text" value="{{row.3}}" />
+
+                  </div>
+
+                  <div>
+                    <label for="" class="">Sex</label>
+
+                    <input class=" form-control" id="sex" name="sex" type="text" value="{{row.4}}" />
+
+                  </div>
+
+                  
+
+                  <div>
+                    <label for="" class="">Date de naissance</label>
+
+                    <input class=" form-control" id="datenaissance" name="datenaissance" type="date"
+                      value="{{row.5}}" />
+
+                  </div>
+
+                  <div>
+                    <label for="" class="">Mail</label>
+
+                    <input class=" form-control" id="mail" name="mail" type="text" value="{{row.6}}" />
+
+                  </div>
+
+                 
+
+                  <div>
+                    <label for="" class="">Promo</label>
+                    <select class=" form-control" id="promo" name="promo" type="text">
+                      {% for i in promo %}
+                      <option value="{{ i[0] }}">{{ i[1] }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+
+
+
+                  <div class="form-group">
+                    <button class="btn btn-theme" type="submit">Save</button>
+                    <button class="btn btn-theme04" type="button">Cancel</button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'index.html' %}
+
+      {% block body %}
+   
+  <div class="row mt">
+    <div class="col-lg-12">
+      <h4><i class="fa fa-angle-right"></i> Ajout apprenant</h4>
+      <div class="form-panel">
+        <div class="form">
+          <form class="cmxform form-horizontal style-form" id="signupForm" method="POST" action="">
+            
+            
+
+            <div class="form-group ">
+<!--               <label for="matricule" class="control-label col-lg-2">matricule</label>
+ -->              <div class="col-lg-10">
+<!--                 <input class=" form-control" id="matricule" name="matricule" type="text"  />
+ -->              </div>
+            </div>
+            <div class="form-group ">
+              <label for="firstname" class="control-label col-lg-2">Prenom</label>
+              <div class="col-lg-10">
+                <input class=" form-control" id="firstname" name="firstname" type="text" required/>
+              </div>
+            </div>
+            <div class="form-group ">
+              <label for="lastname" class="control-label col-lg-2">Nom</label>
+              <div class="col-lg-10">
+                <input class=" form-control" id="lastname" name="lastname" type="text" required />
+              </div>
+            </div>
+            <div class="form-group ">
+              <label for="promo" class="control-label col-lg-2">Sex</label>
+              <div class="col-lg-10">
+                <select class="form-control " id="sex" name="sex" type="text">
+                  <option value="F">F</option>
+                  <option value="M">M</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group ">
+              <label for="lastname" class="control-label col-lg-2">Mail</label>
+              <div class="col-lg-10">
+                <input class=" form-control" id="mail" name="mail" type="text" required />
+              </div>
+            </div>
+            
+       
+            <div class="form-group ">
+              <label for="datenaissance" class="control-label col-lg-2">Date de naissance</label>
+              <div class="col-lg-10">
+                <input class="form-control " id="datenaissance" name="datenaissance" type="date" max="" min="" required/>
+              </div>
+            </div>
+
+            <div class="form-group ">
+              <label for="promo" class="control-label col-lg-2">Promo</label>
+              <div class="col-lg-10">
+                <select class="form-control " id="promo" name="promo" type="promo">
+                  {% for i in apprenant %}
+                  <option value="{{i[0]}}">{{i[1]}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-theme" type="submit">Save</button>
+                <button class="btn btn-theme04" type="button">Cancel</button>
+              </div>
+            </div>
+          </form>
+          {% endblock %}
+        
